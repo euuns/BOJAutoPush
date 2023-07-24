@@ -1,19 +1,17 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
+        Stack<Integer> stack = new Stack<>();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Integer N = Integer.parseInt(br.readLine());
         StringTokenizer st;
 
-        List<Integer> stack = new ArrayList<>();
+        Integer N = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < N; i++) {
 
@@ -22,21 +20,21 @@ public class Main {
 
             if(opr.equals("push")) {
                 Integer num = Integer.parseInt(st.nextToken());
-                stack.add(num);
+                stack.push(num);
             }
 
             else if (opr.equals("pop")) {
-                if(stack.isEmpty())
+                if(stack.empty())
                     System.out.println(-1);
-                else 
-                    System.out.println(stack.remove(stack.size() - 1));
+                else
+                    System.out.println(stack.pop());
             }
 
             else if (opr.equals("top"))
-                if(stack.isEmpty())
+                if(stack.empty())
                     System.out.println(-1);
                 else
-                    System.out.println(stack.get(stack.size()-1));
+                    System.out.println(stack.peek());
 
             else if (opr.equals("size"))
                 System.out.println(stack.size());
